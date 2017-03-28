@@ -13,6 +13,23 @@ class Players extends Migration
      */
     public function up()
     {
+      Schema:: create('games',function (Blueprint $table){
+        $table->increments('id');
+        $table->string('first')->default('');
+        $table->string('last')->default('');
+        $table->integer('gamesPlayed')->default(0);
+        $table->integer('avgMinutes')->default(0);
+        $table->integer('ppg')->default(0);
+        $table->integer('rpg')->default(0);
+        $table->integer('apg')->default(0);
+        $table->integer('spg')->default(0);
+        $table->integer('bpg')->default(0);
+        $table->integer('tpg')->default(0);
+        $table->float('fgPercent',0,2)->default(0.00);
+        $table->float('ftPercent',0,2)->default(0.00);
+        $table->float('tpPercent',0,2)->default(0.00);
+        $table->timestamps();
+      });
         //
     }
 
@@ -23,6 +40,7 @@ class Players extends Migration
      */
     public function down()
     {
+      Schema::dropIfExists('players');
         //
     }
 }
